@@ -1,4 +1,4 @@
-package main.java.by.epam.mutithreading.exception;
+package main.java.by.epam.multithreading.exception;
 
 public class VehicleException extends Exception {
     public VehicleException() {
