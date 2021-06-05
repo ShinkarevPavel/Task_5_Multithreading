@@ -16,10 +16,12 @@ public class VehicleParser {
     }
 
     public List<Double> dataParser(String content) {
-        for (String digit : content.split(PARAMETER_DELIMITER)) {
-            parameters.add(Double.parseDouble(digit));
+        if (content != null) {
+            for (String digit : content.split(PARAMETER_DELIMITER)) {
+                parameters.add(Double.parseDouble(digit));
+            }
+            logger.info("Parameters were parsed");
         }
-        logger.info("Parameters were parsed");
         return parameters;
     }
 }

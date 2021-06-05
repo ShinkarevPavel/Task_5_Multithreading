@@ -40,6 +40,8 @@ public class Vehicle extends Thread {
         this.state = state;
     }
 
+
+
     public void run() {
 
         try {
@@ -47,5 +49,44 @@ public class Vehicle extends Thread {
         } catch (VehicleException e) {
             logger.error(e.getMessage());
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Vehicle vehicle = (Vehicle) o;
+        return Double.compare(vehicle.square, square) == 0 &&
+                Double.compare(vehicle.weight, weight) == 0 &&
+                name.equals(vehicle.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 1;
+        result = result + this.name.hashCode() * 17;
+        result = result + (int) square * 37;
+        result = result + (int) weight * 39;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Vehicle{")
+                .append("state=")
+                .append(state)
+                .append(", name='")
+                .append(name)
+                .append(", square=")
+                .append(square)
+                .append(", weight=")
+                .append(weight)
+                .append('}')
+                .toString();
     }
 }

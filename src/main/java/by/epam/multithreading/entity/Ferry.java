@@ -89,4 +89,38 @@ public class Ferry {
             isCarrying.set(false);
         }
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Ferry ferry = (Ferry) o;
+        return Double.compare(ferry.square, square) == 0 &&
+                Double.compare(ferry.carrying, carrying) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 1;
+        result = result + (int) this.square * 37;
+        result = result + (int) this.carrying * 39;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Ferry{")
+                .append("square=")
+                .append(square)
+                .append(", carrying=")
+                 .append(carrying)
+                .append('}')
+                .toString();
+    }
 }
